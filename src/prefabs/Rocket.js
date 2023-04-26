@@ -15,7 +15,8 @@ if(keyLEFT.isDown&&this.x>=borderUISize+this.width){
 }else if(keyRIGHT.isDown&&this.x<=game.config.width-borderUISize-this.width){
 this.x+=this.moveSpeed;
 }
-if(Phaser.Input.Keyboard.JustDown(keyF)){
+        }
+if(Phaser.Input.Keyboard.JustDown(keyF)&&!this.isFiring){
     this.isFiring=true;
 }
 if(this.isFiring&&this.y>=borderUISize*3+borderPadding){
@@ -24,7 +25,7 @@ if(this.isFiring&&this.y>=borderUISize*3+borderPadding){
 if(this.y<=borderUISize*3+borderPadding){
     this.reset();
 }
-        }
+        
 
     }
     reset(){

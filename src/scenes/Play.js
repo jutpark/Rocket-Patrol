@@ -38,14 +38,18 @@ this.p1Rocket.update();
 this.ship01.update();
 this.ship02.update();
 this.ship03.update();
+// check collisions
 if(this.checkCollision(this.p1Rocket, this.ship03)) {
-    console.log('kaboom ship 03');
+    this.p1Rocket.reset();
+    this.shipExplode(this.ship03);   
   }
   if (this.checkCollision(this.p1Rocket, this.ship02)) {
-    console.log('kaboom ship 02');
+    this.p1Rocket.reset();
+    this.shipExplode(this.ship02);
   }
   if (this.checkCollision(this.p1Rocket, this.ship01)) {
-    console.log('kaboom ship 01');
+    this.p1Rocket.reset();
+    this.shipExplode(this.ship01);
   }
 }
 checkCollision(rocket, ship) {
@@ -59,5 +63,18 @@ checkCollision(rocket, ship) {
       return false;
     }
   }
+  shipExplode(ship) {
+    // temporarily hide ship
+    ship.alpha = 0;
+    // create explosion sprite at ship's position
+    let boom = this.add.sprite(ship.x, ship.y, 'explosion').setOrigin(0, 0);
+    boom.anims.play('explode');             // play explode animation
+    boom.on('animationcomplete', () => {    // callback after anim completes
+      ship.reset();                         // reset ship position
+      ship.alpha = 1;                       // make ship visible again
+      boom.destroy();                       // remove explosion sprite
+    });       
+  }
+
 
 }
