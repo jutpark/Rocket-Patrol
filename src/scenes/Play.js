@@ -59,6 +59,11 @@ this.clock = this.time.delayedCall(game.settings.gameTimer, () => {
     this.add.text(game.config.width/2, game.config.height/2 + 64, 'Press (R) to Restart', scoreConfig).setOrigin(0.5);
     this.gameOver = true;
 }, null, this);
+
+this.clock = this.time.delayedCall(10000, () => {
+  game.settings.spaceshipSpeed+=2;
+  game.settings.NewshipSpeed+=5;
+}, null, this);
 }
 update(){
       // check key input for restart

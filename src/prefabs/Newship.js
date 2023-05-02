@@ -6,6 +6,7 @@ class Newship extends Phaser.GameObjects.Sprite{
         this.moveSpeed = game.settings.NewshipSpeed;
     }
     update(){
+        this.moveSpeed = game.settings.NewshipSpeed;
         this.x-=this.moveSpeed;
         if(this.x<=0-this.width){
             this.reset();
