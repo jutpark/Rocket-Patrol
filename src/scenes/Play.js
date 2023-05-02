@@ -71,6 +71,7 @@ this.ship01.update();
 this.ship02.update();
 this.ship03.update();
 this.newship.update();
+console.log(this.time.now);
 // check collisions
 if(this.checkCollision(this.p1Rocket, this.ship03)) {
     this.p1Rocket.reset();
@@ -87,7 +88,28 @@ if(this.checkCollision(this.p1Rocket, this.ship03)) {
   if(this.checkCollision(this.p1Rocket, this.newship)){
     this.p1Rocket.reset();
     this.shipExplode(this.newship);
-
+    this.time.removeEvent(this.clock);
+    game.settings.gameTimer+=10000;
+    let scoreConfig = {
+      fontFamily: 'Courier',
+      fontSize: '28px',
+      backgroundColor: '#F3B141',
+      color: '#843605',
+      align: 'right',
+      padding: {
+        top: 5,
+        bottom: 5,
+      },
+      fixedWidth: 100
+    }
+    this.scoreLeft = this.add.text(borderUISize + borderPadding, borderUISize + borderPadding*2, this.p1Score, scoreConfig);
+    scoreConfig.fixedWidth = 0;
+    
+    this.clock = this.time.delayedCall(game.settings.gameTimer, () => {
+      this.add.text(game.config.width/2, game.config.height/2, 'GAME OVER', scoreConfig).setOrigin(0.5);
+      this.add.text(game.config.width/2, game.config.height/2 + 64, 'Press (R) to Restart', scoreConfig).setOrigin(0.5);
+      this.gameOver = true;
+  }, null, this);
   }
   if (!this.gameOver) {               
     this.p1Rocket.update();         // update rocket sprite
