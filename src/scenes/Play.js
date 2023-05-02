@@ -60,7 +60,7 @@ this.clock = this.time.delayedCall(game.settings.gameTimer, () => {
     this.gameOver = true;
 }, null, this);
 
-this.clock = this.time.delayedCall(10000, () => {
+this.clock = this.time.delayedCall(30000, () => {
   game.settings.spaceshipSpeed+=2;
   game.settings.NewshipSpeed+=5;
 }, null, this);
