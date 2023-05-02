@@ -8,6 +8,10 @@ class Menu extends Phaser.Scene {
         this.load.audio('sfx_select', './assets/blip_select12.wav');
         this.load.audio('sfx_explosion', './assets/explosion38.wav');
         this.load.audio('sfx_rocket', './assets/rocket_shot.wav');
+        this.load.audio('children','./assets/children.wav');
+        this.load.audio('boom','./assets/boom.wav');
+        this.load.audio('ahhhh','./assets/ahhhh.wav');
+        this.load.audio('pew','./assets/pew.wav');
       }
       create() {
         // menu text configuration
@@ -56,6 +60,7 @@ class Menu extends Phaser.Scene {
           this.sound.play('sfx_select');
           this.scene.start('playScene');    
         }
+        
         if (this.gameOver && Phaser.Input.Keyboard.JustDown(keyLEFT)) {
             this.scene.start("menuScene");
           }

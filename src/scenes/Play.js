@@ -35,6 +35,7 @@ this.anims.create({
     frameRate: 30
 });
 this.p1Score = 0;
+this.rng=0;
 
   // display score
   let scoreConfig = {
@@ -151,7 +152,20 @@ checkCollision(rocket, ship) {
     // score add and repaint
     this.p1Score += ship.points;
     this.scoreLeft.text = this.p1Score;
-    this.sound.play('sfx_explosion');       
+    this.rng=Math.floor(Math.random() * 5);
+    if(this.rng==1){
+      this.sound.play('sfx_explosion'); 
+    }else if(this.rng==2){
+      this.sound.play('ahhhh');
+    }else if(this.rng==3){
+      this.sound.play('boom');
+    }else if(this.rng==4){
+      this.sound.play('children');
+    }
+    else if(this.rng==5){
+      this.sound.play('pew');
+    }
+    //this.sound.play('sfx_explosion');       
   }
   
 
