@@ -74,6 +74,11 @@ update(){
   if (this.gameOver && Phaser.Input.Keyboard.JustDown(keyR)) {
     this.scene.restart();
 }
+if(this.time.now%51000==0){
+  this.sounds = this.time.delayedCall(51000, () => {
+    this.sound.play('song');
+}, null, this);
+}
 this.starfield.tilePositionX-=4;
 this.p1Rocket.update();
 this.ship01.update();

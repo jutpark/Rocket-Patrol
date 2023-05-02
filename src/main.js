@@ -10,7 +10,7 @@ added rainbow explosion particles +15
 https://www.youtube.com/watch?v=LEDPCfot_GY&ab_channel=MitchellHudson
 https://labs.phaser.io/index.html?dir=game%20objects/particle%20emitter/&q=
 citing for particles
-
+added game music +5
 */
 let config={
     type: Phaser.CANVAS,
