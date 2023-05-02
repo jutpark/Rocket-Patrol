@@ -35,6 +35,7 @@ this.anims.create({
     frameRate: 30
 });
 this.p1Score = 0;
+
   // display score
   let scoreConfig = {
     fontFamily: 'Courier',
@@ -49,6 +50,7 @@ this.p1Score = 0;
     fixedWidth: 100
   }
   this.scoreLeft = this.add.text(borderUISize + borderPadding, borderUISize + borderPadding*2, this.p1Score, scoreConfig);
+  this.timeRight = this.add.text(borderUISize + borderPadding*30, borderUISize + borderPadding*2, this.time.now%1000, scoreConfig);
   // GAME OVER flag
 this.gameOver = false;
 
@@ -76,6 +78,7 @@ this.ship01.update();
 this.ship02.update();
 this.ship03.update();
 this.newship.update();
+this.timeRight.text = 60-Math.trunc(this.time.now/1000);
 console.log(this.time.now);
 // check collisions
 if(this.checkCollision(this.p1Rocket, this.ship03)) {
