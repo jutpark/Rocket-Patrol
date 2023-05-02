@@ -8,7 +8,8 @@ class Play extends Phaser.Scene{
         this.load.image('starfield', './assets/starfield.png');
         this.load.spritesheet('explosion', './assets/explosion.png', {frameWidth: 64, frameHeight: 32, startFrame: 0, endFrame: 9});
         this.load.image('newship', './assets/newrocket.png');
-    }
+        this.load.atlas('flares', 'assets/flares.png', 'assets/flares.json');
+      }
 
     create(){
         // green UI background
@@ -150,6 +151,16 @@ checkCollision(rocket, ship) {
       boom.destroy();                     // remove explosion sprite
     });
     // score add and repaint
+    const emitter = this.add.particles(ship.x, ship.y, 'flares', {
+      frame: [ 'red', 'yellow', 'green' ],
+      lifespan: 500,
+      speed: { min: 150, max: 250 },
+      scale: { start: 0.8, end: 0 },
+      gravityY: 150,
+      blendMode: 'ADD',
+      emitting: false
+    });
+    emitter.explode(5);
     this.p1Score += ship.points;
     this.scoreLeft.text = this.p1Score;
     this.rng=Math.floor(Math.random() * 5);

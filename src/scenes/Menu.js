@@ -12,6 +12,7 @@ class Menu extends Phaser.Scene {
         this.load.audio('boom','./assets/boom.wav');
         this.load.audio('ahhhh','./assets/ahhhh.wav');
         this.load.audio('pew','./assets/pew.wav');
+        
       }
       create() {
         // menu text configuration
