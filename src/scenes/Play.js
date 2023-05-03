@@ -119,6 +119,7 @@ if(this.checkCollision(this.p1Rocket, this.ship03)) {
     this.shipExplode(this.newship);
     this.time.removeEvent(this.clock);
     game.settings.gameTimer+=10000;
+    this.timeRight.text = (game.settings.gameTimer/1000)-Math.trunc(this.time.now/1000);
     let scoreConfig = {
       fontFamily: 'Courier',
       fontSize: '28px',
