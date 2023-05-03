@@ -99,7 +99,7 @@ this.ship01.update();
 this.ship02.update();
 this.ship03.update();
 this.newship.update();
-this.timeRight.text = 60-Math.trunc(this.time.now/1000);
+this.timeRight.text = (game.settings.gameTimer/1000)-Math.trunc(this.time.now/1000);
 console.log(this.time.now);
 // check collisions
 if(this.checkCollision(this.p1Rocket, this.ship03)) {
