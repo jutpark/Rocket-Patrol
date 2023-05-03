@@ -8,7 +8,9 @@ class Play extends Phaser.Scene{
         this.load.image('starfield', './assets/starfield.png');
         this.load.spritesheet('explosion', './assets/explosion.png', {frameWidth: 64, frameHeight: 32, startFrame: 0, endFrame: 9});
         this.load.image('newship', './assets/newrocket.png');
-        this.load.atlas('flares', 'assets/flares.png', 'assets/flares.json');
+        this.load.atlas('flares', './assets/flares.png', './assets/flares.json');
+        this.load.audio('music', './assets/Fixed song.wav');
+        
       }
 
     create(){
@@ -37,6 +39,22 @@ this.anims.create({
 });
 this.p1Score = 0;
 this.rng=0;
+this.music=this.sound.add('music',{
+  volume:0.2,
+  loop:true
+})
+if (!this.sound.locked)
+	{
+		// already unlocked so play
+		this.music.play()
+	}
+	else
+	{
+		// wait for 'unlocked' to fire and then play
+		this.sound.once(Phaser.Sound.Events.UNLOCKED, () => {
+			this.music.play()
+		})
+	}
 
   // display score
   let scoreConfig = {
@@ -74,11 +92,7 @@ update(){
   if (this.gameOver && Phaser.Input.Keyboard.JustDown(keyR)) {
     this.scene.restart();
 }
-if(this.time.now%51000==0){
-  this.sounds = this.time.delayedCall(51000, () => {
-    this.sound.play('song');
-}, null, this);
-}
+
 this.starfield.tilePositionX-=4;
 this.p1Rocket.update();
 this.ship01.update();
